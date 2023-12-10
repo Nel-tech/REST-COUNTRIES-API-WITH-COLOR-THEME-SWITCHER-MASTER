@@ -1,0 +1,252 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  font-family: "Nunito Sans", sans-serif;
+}
+/* .container {
+  max-width: 1250px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+} */
+body {
+  background-color: hsl(0, 0%, 98%);
+}
+
+.navbar {
+  width: 100%;
+  border-bottom: 2px solid hsl(0, 20%, 96%); /* Increase thickness as desired */
+  height: 60px;
+  box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.1);
+}
+.navbar .div2 {
+  display: flex;
+  gap: 1rem;
+  cursor: pointer;
+}
+.moon-solid {
+  width: 20px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  padding-top: 1.4rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+.input-container,
+.wrapper-text {
+  position: relative;
+}
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 3rem;
+  margin-right: 3rem;
+  padding-top: 3rem;
+}
+input {
+  width: 400px;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 10px;
+  margin-left: 3rem;
+}
+.error_message {
+  margin: 3rem;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/* input::placeholder {
+  padding-left: 3rem;
+} */
+.icon-search {
+  position: absolute;
+  left: 1rem;
+  top: 35%;
+  color: #000000;
+}
+
+.arrow-down {
+  width: 15px;
+  transform: rotate(-180deg);
+}
+.btn-dropDown {
+  display: flex;
+  background-color: white;
+  gap: 0.9rem;
+  padding: 10px;
+  height: 50px;
+  padding-top: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+.drop-down div a {
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.drop-down {
+  background-color: white;
+  height: 130px;
+  width: 150px;
+  padding: 8px;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+.flex {
+  position: absolute;
+  overflow: hidden;
+  max-height: 0;
+  transition: 0.5s ease-out;
+}
+
+.show .flex {
+  display: block;
+  transition: all 400s ease-out;
+}
+
+.show .arrow-down {
+  transform: rotate(360deg);
+}
+.container-case {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin-left: 3rem;
+  font-size: 2rem;
+  opacity: 0;
+  /* transition: opacity 10s ease-in; */
+  cursor: pointer;
+}
+
+.country {
+  background-color: #fff;
+  box-shadow: 0 2rem 5rem 1rem rgba(0, 0, 0, 0.1);
+  font-size: 1.8rem;
+  width: 17rem;
+  height: 20rem;
+  border-radius: 0.7rem;
+  margin-bottom: 3rem;
+}
+.country a {
+  text-decoration: none;
+  color: #000000;
+}
+.country:hover {
+  transform: scale(1.1);
+  opacity: 0.75;
+  transition: 1s ease-in;
+}
+.country__img {
+  width: 17rem;
+  height: 10rem;
+  object-fit: cover;
+  background-color: #eee;
+  border-top-left-radius: 0.7rem;
+  border-top-right-radius: 0.7rem;
+}
+
+.country__data {
+  padding: 1rem 1rem 1rem 1rem;
+}
+
+.country__name {
+  font-size: 1rem;
+  margin-bottom: 0.7rem;
+}
+
+.country__region {
+  font-size: 0.8rem;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+}
+.country__capital {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.country__row:not(:last-child) {
+  margin-bottom: 0.6rem;
+}
+
+.country__row span {
+  margin-right: 0.3rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.country__row {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Darkmode starts */
+.dark-mode {
+  background-color: hsl(207, 26%, 17%);
+  color: hsl(209, 23%, 22%);
+}
+.dark-mode .navbar {
+  width: 100%;
+  background-color: hsl(209, 23%, 22%);
+  border-bottom: 2px solid hsl(209, 23%, 22%);
+  height: 60px;
+  box-shadow: 0px 5px 5px -5px hsl(209, 23%, 22%);
+}
+.dark-mode nav {
+  color: white;
+}
+.dark-mode input {
+  border: 2px solid hsl(209, 23%, 22%);
+  background-color: hsl(209, 23%, 22%);
+}
+.dark-mode input::placeholder {
+  color: white;
+}
+.dark-mode .btn-dropDown {
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+}
+.dark-mode .drop-down {
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+}
+.dark-mode .country {
+  background-color: hsl(209, 23%, 22%);
+  color: white;
+}
+.dark-mode .country a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Darkmode ends */
+
+@media screen and (max-width: 425px) {
+  nav {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .flex-container {
+    display: block;
+    justify-content: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding-top: 3rem;
+  }
+  .btn-dropDown {
+    margin-top: 1rem;
+  }
+  input {
+    width: 370px;
+  }
+}
