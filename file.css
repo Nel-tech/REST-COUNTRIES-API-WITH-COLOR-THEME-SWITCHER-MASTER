@@ -107,7 +107,7 @@ main p {
   left: 49%;
 }
 .border-btn {
-  margin: 0.1rem;
+  margin: 0.3rem;
   background-color: white;
   color: #111517;
   text-transform: capitalize;
@@ -221,7 +221,7 @@ span {
     margin-right: 0rem;
   }
   .img-src {
-    width: 400px;
+    width: 350px;
   }
   .btn-back {
     margin-left: 1rem;
@@ -233,6 +233,6 @@ span {
 
 @media screen and (max-width: 375px) {
   .img-src {
-    width: 350px;
+    width: 320px;
   }
 }

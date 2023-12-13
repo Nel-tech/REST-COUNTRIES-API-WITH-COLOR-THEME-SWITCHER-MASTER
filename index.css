@@ -250,6 +250,9 @@ input {
     margin-left: 1rem;
     margin-right: 1rem;
   }
+  .container-case {
+    margin-left: 0rem;
+  }
 
   .flex-container {
     display: block;
@@ -262,6 +265,6 @@ input {
     margin-top: 1rem;
   }
   input {
-    width: 370px;
+    width: 330px;
   }
 }
