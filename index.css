@@ -229,6 +229,9 @@ input {
   background-color: hsl(209, 23%, 22%);
   color: white;
 }
+.dark-mode .drop-down a {
+  color: white;
+}
 .dark-mode .country {
   background-color: hsl(209, 23%, 22%);
   color: white;
@@ -237,7 +240,9 @@ input {
   text-decoration: none;
   color: white;
 }
-
+.dark-mode .drop-down a:hover {
+  background-color: #000000;
+}
 /* Darkmode ends */
 
 @media screen and (max-width: 425px) {

@@ -18,7 +18,7 @@ const renderCountry = function (data, className = "") {
   const formattedPopulation = numberWithCommas(data.population);
   const html = ` <article class="country  ${className}">
 
-  <a href="file.html">
+  <a href="file.html?alpha3Code=${data.alpha3Code}">
     <img class="country__img" src="${data.flag}" />
     <div class="country__data">
       <h3 class="country__name">${data.name}</h3>
@@ -39,7 +39,7 @@ async function fetchData() {
   try {
     let response = await fetch("data.json");
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
 
     // Assuming data is an array of country objects
     data.forEach((country) => {
@@ -75,7 +75,7 @@ modeToggle.forEach((toggle) => {
   });
 });
 
-let searchInput = document.querySelector(".input-search");
+let searchInput = document.querySelectorAll(".input-search");
 let errormessage = document.querySelector(".error_message");
 function filterCountries(data, searchTerm) {
   return data.filter((country) =>
@@ -94,65 +94,42 @@ function displayFilteredCountries(filteredCountries) {
   }
 }
 
-searchInput.addEventListener("input", async (event) => {
-  const searchTerm = event.target.value.trim();
-  const allCountries = await fetchData();
-  if (searchTerm === "") {
-    errormessage.style.display = "none";
-    displayFilteredCountries(allCountries);
-  } else {
-    const filteredCountries = filterCountries(allCountries, searchTerm);
-    if (filteredCountries.length > 0) {
-      errormessage.style.display = "none"; // Hide error message if there's a match
-      displayFilteredCountries(filteredCountries);
+searchInput.forEach((search) => {
+  search.addEventListener("input", async (event) => {
+    const searchTerm = event.target.value.trim();
+    const allCountries = await fetchData();
+    if (searchTerm === "") {
+      errormessage.style.display = "none";
+      displayFilteredCountries(allCountries);
     } else {
-      displayFilteredCountries(filteredCountries);
+      const filteredCountries = filterCountries(allCountries, searchTerm);
+      if (filteredCountries.length > 0) {
+        errormessage.style.display = "none";
+        displayFilteredCountries(filteredCountries);
+      } else {
+        displayFilteredCountries(filteredCountries);
+      }
     }
-  }
+  });
 });
 
-// document.addEventListener("click", function (event) {
-//   const clickedElement = event.target.closest(".ContainerCountries");
+function filterByRegion(data, selectedRegion) {
+  if (selectedRegion === "All") {
+    return data; // Return all countries
+  } else {
+    return data.filter((country) => country.region === selectedRegion);
+  }
+}
 
-//   if (!clickedElement) return; // Exit if the click wasn't on a country element
+// Add event listeners to filter by region when a region is clicked
+const regionLinks = document.querySelectorAll(".drop-down a");
+regionLinks.forEach((link) => {
+  link.addEventListener("click", async (event) => {
+    event.preventDefault();
+    const selectedRegion = event.target.dataset.region;
+    const allCountries = await fetchData();
+    const filteredByRegion = filterByRegion(allCountries, selectedRegion);
+    displayFilteredCountries(filteredByRegion);
+  });
+});
 
-//   const countryData = JSON.parse(clickedElement.dataset.ContainerCountries);
-
-//   displayCountryDetails(countryData);
-// });
-
-// // Function to display detailed information about a country (can be a separate HTML page or section)
-// function displayCountryDetails(data, className) {
-//   const formattedhtml = ` <div class="details  ${className}">
-//     <div class="country-flag">
-//       <img src="${data.flag}" alt="" />
-//     </div>
-
-//     <div class="country-case">
-//       <h1 class="country__name">${data.name}</h1>
-
-//       <div class="details-country">
-//         <div class="country-info">
-//           <p class="Native-name">${data.nativeName}</p>
-//           <p class="Population">${data.population}</p>
-//           <p class="Region">${data.region}</p>
-//           <p class="sub-region">${data.subregion}</p>
-//           <p class="Capital">${data.capital}</p>
-
-//           <div class="border-countries">
-//             <p>Border Countries:</p>
-//           </div>
-//         </div>
-
-//         <div class="info-level">
-//           <p class="Top-level_Domain">${data.topLevelDomain}</p>
-//           <p class="currencies">${data.currencies[0].symbol}</p>
-//           <p class="languages">${data.languages.name}</p>
-//         </div>
-//       </div>
-//     </div>
-//   </div>`;
-
-//   countryDetails.insertAdjacentHTML("beforeend", formattedhtml);
-// }
-// console.log(countryData); // For demonstration, log the country data
