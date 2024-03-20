@@ -39,7 +39,7 @@ async function fetchData() {
   try {
     let response = await fetch("data.json");
     const data = await response.json();
-    // console.log(data);
+    console.log(data);
 
     // Assuming data is an array of country objects
     data.forEach((country) => {
@@ -132,4 +132,3 @@ regionLinks.forEach((link) => {
     displayFilteredCountries(filteredByRegion);
   });
 });
-
